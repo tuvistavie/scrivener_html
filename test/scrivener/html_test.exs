@@ -168,6 +168,10 @@ defmodule Scrivener.HTMLTest do
   end
 
   describe "Phoenix conn()" do
+    before :each do
+      Application.put_env(:scrivener_html, :view_style, :bootstrap)
+    end
+
     it "handles no entries" do
       use Phoenix.ConnTest
       Application.put_env(:scrivener_html, :routes_helper, MyApp.Router.Helpers)

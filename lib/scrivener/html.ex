@@ -138,7 +138,7 @@ defmodule Scrivener.HTML do
     content_tag :nav do
       content_tag :ul, class: "pagination" do
         raw_pagination_links(paginator)
-        |> Enum.map fn ({text, page_number})->
+        |> Enum.map(fn ({text, page_number})->
           classes = []
           if paginator.page_number == page_number do
             classes = ["active"]
@@ -153,7 +153,7 @@ defmodule Scrivener.HTML do
               content_tag :a, "#{text}", class: class
             end
           end
-        end
+        end)
       end
     end
   end
@@ -257,8 +257,4 @@ defimpl Enumerable, for: Scrivener.Page do
   def reduce(pages, acc, fun), do: Enum.reduce(pages.entries || [], acc, fun)
   def member?(pages, page), do: page in pages.entries
   def count(pages), do: length(pages.entries)
-end
-defimpl Access, for: Scrivener.Page do
-  def get(pages, key), do: Map.get(pages, key)
-  def get_and_update(pages, key, fun), do: Map.get_and_update(pages, key, fun)
 end

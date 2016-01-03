@@ -46,7 +46,7 @@ defmodule ScrivenerHtml.Mixfile do
       {:scrivener, "~> 1.0"},
       {:phoenix_html, "~> 2.2"},
       {:phoenix, "~> 1.0", optional: true},
-      {:pavlov, "~> 0.2.3", only: :test},
+      {:pavlov, github: "mgwidmann/pavlov", branch: "elixir_1.2_support", only: :test},
       {:ex_doc, "~> 0.10", only: :dev},
       {:earmark, "~> 0.1", only: :dev},
     ]
