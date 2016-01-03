@@ -144,13 +144,13 @@ defmodule Scrivener.HTML do
             classes = ["active"]
           end
           params_with_page = Dict.merge(params, page: page_number)
-          content_tag :li do
+          class = Enum.join(classes, " ")
+          content_tag :li, class: class do
             to = apply(path, args ++ [params_with_page])
-            class = Enum.join(classes, " ")
             if to do
-              link "#{text}", to: apply(path, args ++ [params_with_page]), class: class
+              link "#{text}", to: apply(path, args ++ [params_with_page])
             else
-              content_tag :a, "#{text}", class: class
+              content_tag :a, "#{text}"
             end
           end
         end)
